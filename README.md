@@ -1,4 +1,4 @@
-# Parcial 2 - Lenguajes de Programación (Repositorio en Python)
+# Parcial 2 - Lenguajes de Programación 
 
 **Contenido**: Este repo contiene soluciones en Python para los puntos del parcial. A continuación se **explica punto por punto** qué se pide en el PDF y qué archivo(s) del repositorio implementan cada punto, además de cómo ejecutar y comprobar cada entrega.
 
@@ -20,7 +20,7 @@
 
 ---
 
-## Explicación punto por punto (según el PDF)
+## Explicación punto por punto
 
 ### Punto 1 — Diseñe una gramática de un lenguaje de programación que permita hacer las operaciones de CRUD en una base de datos.
 **Qué pide:** Diseñar la gramática (símbolos terminales/no terminales, reglas de producción) que permita expresar `SELECT`, `INSERT`, `UPDATE` y `DELETE` (operaciones CRUD) en una forma sencilla.
