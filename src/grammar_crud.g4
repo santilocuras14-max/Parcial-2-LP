@@ -1,9 +1,9 @@
 \
 grammar CRUD;
 
-options { tokenVocab=Tokens; } // placeholder if using a separate tokens file
+options { tokenVocab=Tokens; } 
 
-// Parser rules
+
 stmtlist : stmt SEMICOL (stmt SEMICOL)* ;
 stmt : selectStmt
      | insertStmt
@@ -26,7 +26,7 @@ optWhere : WHERE condition
          ;
 condition : ID EQ (literal | ID) ;
 
-// Lexer rules
+
 SELECT : 'SELECT' ;
 INSERT : 'INSERT' ;
 INTO   : 'INTO' ;
