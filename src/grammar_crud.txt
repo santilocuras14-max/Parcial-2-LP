@@ -1,0 +1,19 @@
+# Gramática (sugerida) para un mini-lenguaje CRUD (sintaxis tipo SQL simplificada)
+# Start symbol: S
+# Terminal tokens: SELECT, INSERT, UPDATE, DELETE, FROM, WHERE, SET, VALUES, INTO, id, literal, ',', ';', '(', ')', '=', '*'
+#
+# Nota: Esta gramática es una propuesta de alta-nivel para representar operaciones CRUD.
+#
+S -> StmtList
+StmtList -> Stmt ';' StmtList | Stmt ';'
+Stmt -> SelectStmt | InsertStmt | UpdateStmt | DeleteStmt
+SelectStmt -> SELECT SelectList FROM id OptWhere
+SelectList -> '*' | FieldList
+FieldList -> id | id ',' FieldList
+InsertStmt -> INSERT INTO id '(' FieldList ')' VALUES '(' ValueList ')'
+ValueList -> literal | literal ',' ValueList
+UpdateStmt -> UPDATE id SET AssignList OptWhere
+AssignList -> id '=' literal | id '=' literal ',' AssignList
+DeleteStmt -> DELETE FROM id OptWhere
+OptWhere -> WHERE Condition | epsilon
+Condition -> id '=' literal | id '=' id
