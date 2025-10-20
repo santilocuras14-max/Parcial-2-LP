@@ -36,10 +36,4 @@ python3 benchmarks/compare_parsers.py
 
 ## Notas
 - Los scripts proveen ejemplos y una breve explicación en sus comentarios.
-- El archivo `src/grammar_crud.txt` contiene una propuesta de gramática para operaciones CRUD (estilo SQL simplificado).
-
-
-## Archivos añadidos
-- `src/grammar_crud.g4` : ANTLR grammar for the CRUD language.
-- `src/compute_prediction.py` : builds FIRST/FOLLOW and prediction table for the LL(1) grammar.
-- `report/Deliverables.md` : mapping of PDF requirements to repository files.
+- El archivo `src/grammar_crud.txt` contiene una propuesta de gramática para operaciones CRUD
