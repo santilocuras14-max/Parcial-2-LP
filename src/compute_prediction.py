@@ -1,6 +1,4 @@
-"""Compute FIRST, FOLLOW and Prediction sets for a given grammar (dictionary form).
-Also builds a simple LL(1) prediction table for nonterminals and terminals.
-"""
+
 from collections import defaultdict
 
 def compute_first(G):
