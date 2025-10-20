@@ -1,4 +1,4 @@
-"""Simple tokenizer used by the example parsers (very small, for the provided grammars)."""
+
 import re
 from dataclasses import dataclass
 from typing import List, Tuple
