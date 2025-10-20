@@ -1,23 +1,11 @@
-"""CYK parser for a grammar in CNF. For simplicity we define a CNF version
-of the arithmetic grammar and then test CYK on sample inputs.
-CNF grammar used (example):
-E -> (not directly in CNF) so we prepare a small CNF set for expressions using intermediate non-terminals.
-"""
+
 from collections import defaultdict
 
-# Example CNF grammar for simple expressions over tokens id, +, *, (, )
-# We'll encode productions as: A -> BC  or A -> terminal
 CNF = {
     'E': [['T','E_PRIME']],
-    'E_PRIME': [['PLUS_T','E_PRIME'], []],  # empty will not be used in CNF; we will use an equivalent CNF below
+    'E_PRIME': [['PLUS_T','E_PRIME'], []],  
 }
 
-# For CYK we must provide pure CNF. Construct a small CNF for expressions like id + id * id
-# We'll use:
-# S -> EXPR
-# EXPR -> TERM EXPR2
-# EXPR2 -> PLUS TERM | PLUS TERM EXPR2  (not CNF) -> transform using intermediate
-# For brevity we provide a small illustrative CNF for the language id (+ id | * id )* which suffices for short strings
 
 GRAM = [
     ('S','EXPR'),
@@ -52,15 +40,15 @@ def build_maps():
     return bin_rules, term_rules, eps
 
 def cyk_parse(tokens):
-    # tokens: list of terminal strings ['id','+','id',...]
+
     n = len(tokens)
     bin_rules, term_rules, eps = build_maps()
     P = [ [set() for j in range(n)] for i in range(n) ]
-    # initialize
+
     for i,t in enumerate(tokens):
         if t in term_rules:
             P[i][i].update(term_rules[t])
-    # CYK
+
     for l in range(2, n+1):
         for i in range(0, n-l+1):
             j = i + l - 1
@@ -71,7 +59,7 @@ def cyk_parse(tokens):
                     for B in list(right):
                         for lhs in bin_rules.get((A,B), []):
                             P[i][j].add(lhs)
-    # check if S in P[0][n-1]
+    
     if n==0:
         return False
     return 'S' in P[0][n-1]
